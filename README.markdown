@@ -1,21 +1,31 @@
-December 12, 2011
+May 17, 2017
 
-King Wilder
-info@kingwilder.com
+This is a fork of King Wilder's dynamic linq project 
+https://github.com/kahanu/System.Linq.Dynamic
 
-This is the Microsoft assembly for the .Net 4.0 Dynamic language functionality.
+You can copy the 'DynamicLinq.cs' and use it in your project, it is a single file that contains everything you need.
 
-I am in no way taking ownership of this assembly!  I'm am simply making it available since it seems very hard to find.  I've also created [a NuGet package](https://www.nuget.org/packages/System.Linq.Dynamic/) so it's easy to import into your Visual Studio projects.  You can install it via NuGet with this command in the Nuget Package Manager:
+## Added methods
 
-```
-Install-Package System.Linq.Dynamic
-```
+public static IQueryable<TResult> Select<TResult>(this IQueryable source, string selector, params object[] values)
 
-## Documentation and Samples
+Can be used to select dynamic types and cast them to a specific class.
 
-You can find sample code and documentation on usage from this link, just Accept the terms and you will download a Visual Studio file with C# code and HTML documentation.
+public static class CustomLinq { }
 
-http://msdn.microsoft.com/en-US/vstudio/bb894665.aspx
-(Special thanks dradovic)
+Can be used to create your own user defined methods.
 
-The documentation is being migrated into the [wiki](../../wiki) and the samples into the [repository](../../tree/master/CSharpSamples) for easier access. Please take a look.
+## Changed methods
+
+The & and | operator are now bitwise operators if the left and right operand type is numeric.
+
+
+
+## Future:
+
+Next I will implement a method, that can handle static list creation. E.g.:
+
+
+var resul = persons.Where("(new List<int>{22, 23, 31, 45}).Contains(Age)");
+
+This is usefull if you want to create something like the where in clause in sql.
