@@ -7,7 +7,7 @@ You can copy the 'DynamicLinq.cs' and use it in your project, it is a single fil
 
 ## Added methods
 
-public static IQueryable<TResult> Select<TResult>(this IQueryable source, string selector, params object[] values)
+public static IQueryable&lt;TResult&gt; Select&lt;TResult&gt;(this IQueryable source, string selector, params object[] values)
 
 Can be used to select dynamic types and cast them to a specific class.
 
